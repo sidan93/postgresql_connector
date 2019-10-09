@@ -10,8 +10,8 @@ pip install postgresql-mini-connector
 
 # Simple Start for home project
 
-## Install package from pip
-## Use connector
+1. Install package from pip
+2. Use connector
 ```
 from postgresqlconnector import DB
 print(DB.query('''select * from pg_stat_activity'''))
