@@ -1,9 +1,8 @@
 from distutils.core import setup
-from setuptools import find_packages
 
 setup(
   name = 'postgresqlconnector',         # How you named your package folder (MyLib)
-  packages = find_packages('postgresqlconnector'),   # Chose the same as "name"
+  packages = ['postgresqlconnector'],   # Chose the same as "name"
   version = '0.2',      # Start with a small number and increase it with every change you make
   license='MIT',        # Chose a license from here: https://help.github.com/articles/licensing-a-repository
   description = 'Mini module to work with PostgreSQL',   # Give a short description about your library
@@ -14,7 +13,7 @@ setup(
   keywords = ['Postgre', 'PostgreSQL', 'connector'],   # Keywords that define your package best
   install_requires=[            # I get to this in a second
           'psycopg2'
-      ],
+  ],
   classifiers=[
     'Development Status :: 3 - Alpha',      # Chose either "3 - Alpha", "4 - Beta" or "5 - Production/Stable" as the current state of your package
     'Intended Audience :: Developers',      # Define that your audience are developers
