@@ -80,7 +80,6 @@ class DB:
     def exit(cls):
         if cls._connection:
             cls._connection.close()
-            print('close_connection')
 
 
 @atexit.register
