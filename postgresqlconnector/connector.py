@@ -3,6 +3,7 @@ from psycopg2.extras import NamedTupleCursor
 from psycopg2.extensions import connection
 from collections import namedtuple
 from typing import List, Type
+import atexit
 
 
 __all__ = ['DB']
@@ -10,6 +11,13 @@ __all__ = ['DB']
 
 class DB:
     _connection: connection = None
+    _connection_info = {
+        'host': 'localhost',
+        'port': '5432',
+        'dbname': 'postgres',
+        'user': 'postgres',
+        'password': 'postgres',
+    }
 
     def __init__(self):
         raise Exception('DB is singleton')
@@ -37,20 +45,26 @@ class DB:
         return row[0]
 
     @classmethod
-    def _get_connection(cls,
-                        host='localhost',
-                        port='5432',
-                        dbname='postgres',
-                        user='postgres',
-                        password='postgres') -> connection:
+    def set_connection_info(cls,
+                            host: str = None,
+                            port: int = None,
+                            dbname: str = None,
+                            user: str = None,
+                            password: str = None):
+        if cls._connection:
+            cls._connection.close()
+
+        for value, param in zip(
+            [host, port, dbname, user, password],
+            ['host', 'port', 'dbname', 'user', 'password']
+        ):
+            if value:
+                cls._connection_info[param] = value
+
+    @classmethod
+    def _get_connection(cls) -> connection:
         if not DB._connection:
-            DB._connection = psycopg2.connect(
-                host=host,
-                port=port,
-                dbname=dbname,
-                user=user,
-                password=password
-            )
+            DB._connection = psycopg2.connect(**cls._connection_info)
 
         return DB._connection
 
@@ -62,6 +76,13 @@ class DB:
         conn.commit()
         return cursor
 
-    def __del__(self):
-        if DB._connection:
-            DB._connection.close()
+    @classmethod
+    def exit(cls):
+        if cls._connection:
+            cls._connection.close()
+            print('close_connection')
+
+
+@atexit.register
+def _destructor():
+    DB.exit()

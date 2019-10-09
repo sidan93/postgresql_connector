@@ -1,5 +1,5 @@
 import unittest
-from connector import DB
+from postgresqlconnector.connector import DB
 
 
 class TestConnector(unittest.TestCase):
