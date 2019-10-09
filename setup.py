@@ -1,33 +1,31 @@
-from distutils.core import setup
+import setuptools
 
-from os import path
-this_directory = path.abspath(path.dirname(__file__))
-with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
-    long_description = f.read()
+with open("README.md", "r") as fh:
+    long_description = fh.read()
 
-setup(
-  name = 'postgresqlconnector',         # How you named your package folder (MyLib)
-  packages = ['postgresqlconnector'],   # Chose the same as "name"
-  version = '0.43',      # Start with a small number and increase it with every change you make
-  license='MIT',        # Chose a license from here: https://help.github.com/articles/licensing-a-repository
-  description = 'Mini module to work with PostgreSQL',   # Give a short description about your library
-  long_description = long_description,
+setuptools.setup(
+  name='postgresqlconnector',
+  packages=['postgresqlconnector'],
+  version='0.5',
+  license='MIT',
+  description='A small module for working quickly with the PostgreSQL',
+  long_description=long_description,
   long_description_content_type='text/markdown',
-  author = 'Sidorov A.B.',                   # Type in your name
-  author_email = 'sidan93@gmail.com',      # Type in your E-Mail
-  url = 'https://github.com/sidan93/postgresql_connector',   # Provide either the link to your github or to your website
-  download_url = 'https://github.com/sidan93/postgresql_connector/archive/v0.4.tar.gz',    # I explain this later on
-  keywords = ['Postgre', 'PostgreSQL', 'connector', 'postgresqlconnection', 'postgresql connector'],   # Keywords that define your package best
-  install_requires=[            # I get to this in a second
+  author='Sidorov A.B.',
+  author_email='sidan93@gmail.com',
+  url='https://github.com/sidan93/postgresql_connector',
+  download_url='https://github.com/sidan93/postgresql_connector/archive/v0.5.tar.gz',
+  keywords=['Postgre', 'PostgreSQL', 'connector', 'postgresqlconnection', 'postgresql connector'],
+  install_requires=[
     'psycopg2',
     'psycopg2-binary'
   ],
   classifiers=[
-    'Development Status :: 3 - Alpha',      # Chose either "3 - Alpha", "4 - Beta" or "5 - Production/Stable" as the current state of your package
-    'Intended Audience :: Developers',      # Define that your audience are developers
+    'Development Status :: 4 - Beta',      # "3 - Alpha", "4 - Beta" or "5 - Production/Stable"
+    'Intended Audience :: Developers',
     'Topic :: Software Development :: Build Tools',
-    'License :: OSI Approved :: MIT License',   # Again, pick a license
-    'Programming Language :: Python :: 3',      #Specify which pyhton versions that you want to support
+    'License :: OSI Approved :: MIT License',
+    'Programming Language :: Python :: 3',
     'Programming Language :: Python :: 3.4',
     'Programming Language :: Python :: 3.5',
     'Programming Language :: Python :: 3.6',
