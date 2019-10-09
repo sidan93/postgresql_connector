@@ -1,16 +1,12 @@
 # About
-Mini module to work with PostgreSQL
-
-# Install
-
-Use pip:
-```
-pip install postgresql-mini-connector
-```
+A small module for working quickly with the PostgreSQL
 
 # Simple Start for home project
 
 1. Install package from pip
+```
+pip install postgresql-mini-connector
+```
 2. Use connector
 ```
 from postgresqlconnector import DB
