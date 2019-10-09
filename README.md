@@ -40,7 +40,7 @@ Get first row from your sql query
 #### Result:
   * Record
 ```
-result = DB.query('''select * from pg_stat_activity''')
+result = DB.row('''select * from pg_stat_activity''')
 print(result.pid)
 ```
 ### scalar
@@ -52,7 +52,7 @@ Get first column from first row from you sql query
 #### Result:
   * Scalar
 ```
-result = DB.query('''select pid, * from pg_stat_activity''')
+result = DB.scalar('''select pid, * from pg_stat_activity''')
 print(result)
 ```
 ### set_connection_info
