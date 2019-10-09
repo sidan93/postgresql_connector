@@ -1,11 +1,18 @@
 from distutils.core import setup
 
+from os import path
+this_directory = path.abspath(path.dirname(__file__))
+with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
+    long_description = f.read()
+
 setup(
   name = 'postgresqlconnector',         # How you named your package folder (MyLib)
   packages = ['postgresqlconnector'],   # Chose the same as "name"
-  version = '0.4',      # Start with a small number and increase it with every change you make
+  version = '0.42',      # Start with a small number and increase it with every change you make
   license='MIT',        # Chose a license from here: https://help.github.com/articles/licensing-a-repository
   description = 'Mini module to work with PostgreSQL',   # Give a short description about your library
+  long_description = long_description,
+  long_description_content_type='text/markdown',
   author = 'Sidorov A.B.',                   # Type in your name
   author_email = 'sidan93@gmail.com',      # Type in your E-Mail
   url = 'https://github.com/sidan93/postgresql_connector',   # Provide either the link to your github or to your website
