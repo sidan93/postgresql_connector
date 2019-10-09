@@ -18,10 +18,10 @@ print(DB.query('''select * from pg_stat_activity'''))
 ### query 
 Get all rows from your sql query
 #### Param:
-  * sql: str - Your query
-  * params: dict - Params for query
+* sql: str - Your query
+* params: dict - Params for query
 #### Result:
-  * Array of Record
+* Array of Record
 ```
 result = DB.query('''select * from pg_stat_activity''')
 print(result[0])
@@ -31,10 +31,10 @@ print(result[0].pid)
 
 Get first row from your sql query
 #### Param:
-  * sql: str - Your query
-  * params: dict - Params for query 
+* sql: str - Your query
+* params: dict - Params for query 
 #### Result:
-  * Record
+* Record
 ```
 result = DB.row('''select * from pg_stat_activity''')
 print(result.pid)
@@ -43,10 +43,10 @@ print(result.pid)
 
 Get first column from first row from you sql query
 #### Param:
-  * sql: str - Your query
-  * params: dict - Params for query 
+* sql: str - Your query
+* params: dict - Params for query 
 #### Result:
-  * Scalar
+* Scalar
 ```
 result = DB.scalar('''select pid, * from pg_stat_activity''')
 print(result)
@@ -55,8 +55,8 @@ print(result)
 
 Set database connections
 #### Param:
-  * host: str = 'localhose' - Host
-  * port: str = '5432' - Port
-  * dbname: str = 'postgres' - Database name
-  * user: str = 'postgres' - User
-  * password: str = 'postgres' - Password
+* host: str = 'localhose' - Host
+* port: str = '5432' - Port
+* dbname: str = 'postgres' - Database name
+* user: str = 'postgres' - User
+* password: str = 'postgres' - Password
