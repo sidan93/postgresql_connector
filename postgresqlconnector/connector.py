@@ -4,6 +4,7 @@ from psycopg2.extensions import connection
 from collections import namedtuple
 from typing import List, Type
 import atexit
+from .transaction import Transaction, CreateTransactionException
 
 
 __all__ = ['DB']
@@ -18,6 +19,7 @@ class DB:
         'user': 'postgres',
         'password': 'postgres',
     }
+    _transaction: Transaction = None
 
     def __init__(self):
         raise Exception('DB is singleton')
@@ -62,6 +64,22 @@ class DB:
                 cls._connection_info[param] = value
 
     @classmethod
+    def create_transaction(cls) -> Transaction:
+        if cls._transaction:
+            raise CreateTransactionException()
+
+        cls._transaction = Transaction(cls)
+        return cls._transaction
+
+    @classmethod
+    def close_transaction(cls, rollback=False):
+        cls._transaction = None
+        if rollback:
+            cls._connection.rollback()
+        else:
+            cls._connection.commit()
+
+    @classmethod
     def _get_connection(cls) -> connection:
         if not DB._connection:
             DB._connection = psycopg2.connect(**cls._connection_info)
@@ -73,13 +91,17 @@ class DB:
         conn = cls._get_connection()
         cursor = conn.cursor(cursor_factory=NamedTupleCursor)
         cursor.execute(sql, params)
-        conn.commit()
+
+        if not cls._transaction:
+            conn.commit()
+
         return cursor
 
     @classmethod
     def exit(cls):
         if cls._connection:
             cls._connection.close()
+            cls._connection = None
 
 
 @atexit.register
