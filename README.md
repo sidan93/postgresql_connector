@@ -5,7 +5,7 @@ A small module for working quickly with the PostgreSQL
 
 1. Install package from pip
 ```
-pip install postgresql-mini-connector
+pip install postgresqlconnector
 ```
 2. Use connector
 ```
