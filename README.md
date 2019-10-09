@@ -19,7 +19,8 @@ print(DB.query('''select * from pg_stat_activity'''))
 
 ## API
 
-* query
+* **query** 
+
 Get all rows from your sql query
 Param:
   * sql: str - Your query
@@ -31,7 +32,8 @@ result = DB.query('''select * from pg_stat_activity''')
 print(result[0])
 print(result[0].pid)
 ```
-* row
+* **row** 
+
 Get first row from your sql query
 Param:
   * sql: str - Your query
@@ -42,7 +44,8 @@ Result:
 result = DB.query('''select * from pg_stat_activity''')
 print(result.pid)
 ```
-* scalar
+* **scalar** 
+
 Get first column from first row from you sql query
 Param:
   * sql: str - Your query
@@ -53,7 +56,8 @@ Result:
 result = DB.query('''select pid, * from pg_stat_activity''')
 print(result)
 ```
-* set_connection_info
+* **set_connection_info** 
+
 Set database connections
 Param:
   * host: str = 'localhose' - Host
