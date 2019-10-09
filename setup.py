@@ -2,9 +2,9 @@ from distutils.core import setup
 from setuptools import find_packages
 
 setup(
-  name = 'postgresql.connector',         # How you named your package folder (MyLib)
-  packages = find_packages('postgresql.connector'),   # Chose the same as "name"
-  version = '0.1',      # Start with a small number and increase it with every change you make
+  name = 'postgresqlconnector',         # How you named your package folder (MyLib)
+  packages = find_packages('postgresqlconnector'),   # Chose the same as "name"
+  version = '0.2',      # Start with a small number and increase it with every change you make
   license='MIT',        # Chose a license from here: https://help.github.com/articles/licensing-a-repository
   description = 'Mini module to work with PostgreSQL',   # Give a short description about your library
   author = 'Sidorov A.B.',                   # Type in your name
