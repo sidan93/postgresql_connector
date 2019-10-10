@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 setuptools.setup(
   name='postgresqlconnector',
   packages=['postgresqlconnector'],
-  version='0.5',
+  version='0.6',
   license='MIT',
   description='A small module for working quickly with the PostgreSQL',
   long_description=long_description,
@@ -14,7 +14,7 @@ setuptools.setup(
   author='Sidorov A.B.',
   author_email='sidan93@gmail.com',
   url='https://github.com/sidan93/postgresql_connector',
-  download_url='https://github.com/sidan93/postgresql_connector/archive/v0.5.tar.gz',
+  download_url='https://github.com/sidan93/postgresql_connector/archive/v0.6.tar.gz',
   keywords=['Postgre', 'PostgreSQL', 'connector', 'postgresqlconnection', 'postgresql connector'],
   install_requires=[
     'psycopg2',

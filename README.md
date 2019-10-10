@@ -27,8 +27,8 @@ result = DB.query('''select * from pg_stat_activity''')
 print(result[0])
 print(result[0].pid)
 ```
-### row
 
+### row
 Get first row from your sql query
 #### Param:
 * sql: str - Your query
@@ -39,8 +39,8 @@ Get first row from your sql query
 result = DB.row('''select * from pg_stat_activity''')
 print(result.pid)
 ```
-### scalar
 
+### scalar
 Get first column from first row from you sql query
 #### Param:
 * sql: str - Your query
@@ -51,8 +51,8 @@ Get first column from first row from you sql query
 result = DB.scalar('''select pid, * from pg_stat_activity''')
 print(result)
 ```
-### set_connection_info
 
+### set_connection_info
 Set database connections
 #### Param:
 * host: str = 'localhose' - Host
@@ -60,3 +60,12 @@ Set database connections
 * dbname: str = 'postgres' - Database name
 * user: str = 'postgres' - User
 * password: str = 'postgres' - Password
+
+### create_transaction
+Work with transaction.
+
+If an exception occurs in your code, the transaction will rollback
+```
+with DB.create_transaction():
+    # block for your code
+``` 
